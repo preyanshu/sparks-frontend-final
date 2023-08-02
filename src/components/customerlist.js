@@ -5,7 +5,10 @@ import Customer from './customer';
 function Customers() {
 
  const context = useContext(DataContext);
-  const {data, getData} = context;
+  const { data,getData, isLoading} = context;
+
+
+  
 
     useEffect(() =>{
        getData();
@@ -13,9 +16,14 @@ function Customers() {
   return (
     <div className="my-3">
         <h1 className="my-3 text-center">List of Customers</h1>
-        {data.map((data)=>{
+        {isLoading &&
+        <div className="loadingelm">
+        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+         }
+        {!isLoading && data.map((data)=>{
             return <Customer key={data._id} data={data}/>;
-        })}
+        })} 
    </div>
   )
 }

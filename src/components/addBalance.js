@@ -26,8 +26,9 @@ function AddBalance(props) {
        e.preventDefault();
      }
      else
-      {  if(balance < 0){
+      {  if(balance <= 0){
           alert("Enter Valid Balance");
+          e.preventDefault();
           return 0;
         }
 

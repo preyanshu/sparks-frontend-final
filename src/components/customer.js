@@ -8,6 +8,7 @@ function Customer(props) {
   const {storeId} = context;
     const {data} = props;
 
+   
     const onClick =()=>{
         storeId(data._id, data.currentBalance);
     }
