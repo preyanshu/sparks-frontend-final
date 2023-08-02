@@ -4,6 +4,7 @@ const DataState = (props)=>{
     const dataInitial =[]
     const [data, setData] = useState(dataInitial)
 
+    const [isLoading, setIsLoading] = useState(true)
 
     const getData = async () =>{
 
@@ -18,11 +19,11 @@ const DataState = (props)=>{
         });
             const json = await response.json();
             setData(json)
+            setIsLoading(false)
             
             
     }
-  
-
+    
     //temp function
     const [Id, setId] = useState("");
     const [IdBalance, setIdBalance] = useState(0);
@@ -105,7 +106,7 @@ const DataState = (props)=>{
  
 
      return (
-        <DataContext.Provider value={{data, Id, IdBalance, bal2, addBalance, getData, storeId, transferMoney}}>
+        <DataContext.Provider value={{data, Id, IdBalance, bal2, isLoading,  addBalance, getData, storeId, transferMoney}}>
             {props.children}
         </DataContext.Provider>
      )
